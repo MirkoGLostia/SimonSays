@@ -1,0 +1,40 @@
+/*********
+ *GENERAL*
+ *********/
+
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    background-color: #12a006;
+}
+
+/********
+ *HEADER*
+ ********/
+
+ header {
+    margin-top: 20px;
+    padding: 30px;
+    text-align: center;
+    font-size: 3em;
+}
+
+
+/******
+ *MAIN*
+ ******/
+
+ #contenitore {
+    width: 100%;
+}
+
+
+
+/*******
+ *DEBUG*
+ *******/
