@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #12a006;
+    background-color: #76058d;
 }
 
 /********
@@ -29,10 +29,49 @@ body {
  *MAIN*
  ******/
 
- #contenitore {
+ #container {
     width: 100%;
 }
 
+#container > #game-wraper {
+    background-color: darkcyan;
+    margin: 0 auto;
+    padding: 20px;
+    width: 450px;
+    border: 5px solid white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#container > #game-wraper > .color-button {
+    width: 200px;
+    height: 200px;
+}
+
+#container > #game-wraper > .red {
+    background-color: red;
+    opacity: 0.5;
+}
+
+#container > #game-wraper > .yellow {
+    background-color: yellow;
+    opacity: 0.5;
+}
+
+#container > #game-wraper > .green {
+    background-color: green;
+    opacity: 0.5;
+}
+
+#container > #game-wraper > .blue {
+    background-color: blue;
+    opacity: 0.5;
+}
+
+#container > #game-wraper > .color-button.active {
+    opacity: 1;
+}
 
 
 /*******
