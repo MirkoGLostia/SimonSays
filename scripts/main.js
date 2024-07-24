@@ -4,20 +4,69 @@ let sequenceUser = [];
 
 
 // functions
-function activeClass() {
-    sequenceUser.push(this.value);
-    console.log(sequenceUser);
+function randomNumber() {
+    let number = Math.floor(Math.random() * 4) + 1;
+    return number;
+}
 
-    this.classList.add("active");
+function growingSequence() {
+    sequenceRandom.push(randomNumber());
+}
+
+function activeClass(a) {
+    a.classList.add("active");
     setTimeout(() => {
         Array.from(document.querySelectorAll('.color-button.active')).forEach(
             (el) => el.classList.remove('active')
           );
     }, 1000);
-
 }
 
+function showSequence() {
+    sequenceRandom.forEach(element => {
+        if (element === 1) {
+            const el = document.getElementById("red");
+            activeClass(el);
+        } else if (element === 2){
+            const el = document.getElementById("yellow");
+            activeClass(el);
+        } else if (element === 3) {
+            const el = document.getElementById("green");
+            activeClass(el);
+        }else {
+            const el = document.getElementById("blue");
+            activeClass(el);
+        }
+    });
+}
 
+function UserActiveClass() {
+    sequenceUser.push(this.value);
+    console.log(sequenceUser);
+    
+    activeClass(this);
+
+    // cheking if value is correct
+    const pcNumber = sequenceRandom[sequenceUser.length - 1];
+
+    if (pcNumber != this.value) {
+        window.alert("Hai sbagliato\nsei arrivato a: " + sequenceRandom.length + " colori in sequenza");
+
+        sequenceRandom = [];
+        sequenceUser = [];
+
+        sequenceRandom.push(randomNumber());
+        console.log(sequenceRandom);
+    }
+    
+    if (sequenceRandom.length === sequenceUser.length) {
+        sequenceUser = [];
+        growingSequence();
+        console.log(sequenceRandom);
+        showSequence();
+    }
+
+}
 
 
 
@@ -39,16 +88,20 @@ for (let i = 1; i < 5; i++) {
 
     if (i === 1) {
         quadrato.classList.add("red");
+        quadrato.setAttribute("id", "red");
     } else if (i === 2) {
         quadrato.classList.add("yellow");
+        quadrato.setAttribute("id", "yellow");
     } else if (i === 3) {
         quadrato.classList.add("green");
+        quadrato.setAttribute("id", "green");
     } else {
         quadrato.classList.add("blue");
+        quadrato.setAttribute("id", "blue");
     }
 
     // aggiunta evento
-    quadrato.onclick = activeClass;
+    quadrato.onclick = UserActiveClass;
 
 
     //aggiunta nuovo elemento al contenitore
@@ -56,3 +109,11 @@ for (let i = 1; i < 5; i++) {
 
 
 }
+
+
+
+
+// random sequence
+sequenceRandom.push(randomNumber());
+console.log(sequenceRandom);
+showSequence();
