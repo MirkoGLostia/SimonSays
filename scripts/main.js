@@ -69,6 +69,7 @@ function UserActiveClass() {
 
         sequenceRandom.push(randomNumber());
         console.log(sequenceRandom);
+        setTimeout(showSequence(), 2000);
     }
     
     if (sequenceRandom.length === sequenceUser.length) {
