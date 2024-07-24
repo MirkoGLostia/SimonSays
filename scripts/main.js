@@ -9,6 +9,11 @@ function randomNumber() {
     return number;
 }
 
+function updateSequenceCounterInPage() {
+    const el = document.getElementById("sequenceCounter");
+    el.textContent = sequenceRandom.length;
+}
+
 function growingSequence() {
     sequenceRandom.push(randomNumber());
 }
@@ -22,22 +27,29 @@ function activeClass(a) {
     }, 1000);
 }
 
+
 function showSequence() {
-    sequenceRandom.forEach(element => {
-        if (element === 1) {
-            const el = document.getElementById("red");
-            activeClass(el);
-        } else if (element === 2){
-            const el = document.getElementById("yellow");
-            activeClass(el);
-        } else if (element === 3) {
-            const el = document.getElementById("green");
-            activeClass(el);
-        }else {
-            const el = document.getElementById("blue");
-            activeClass(el);
-        }
-    });
+
+    for (let i = 0; i < sequenceRandom.length; i++) {
+        const element = sequenceRandom[i];
+        let timer = i * 2000 + 2000;
+        setTimeout(() => {
+            if (element === 1) {
+                const el = document.getElementById("red");
+                activeClass(el);
+            } else if (element === 2){
+                const el = document.getElementById("yellow");
+                activeClass(el);
+            } else if (element === 3) {
+                const el = document.getElementById("green");
+                activeClass(el);
+            }else {
+                const el = document.getElementById("blue");
+                activeClass(el);
+            }
+        }, timer);
+    }
+
 }
 
 function UserActiveClass() {
@@ -63,7 +75,8 @@ function UserActiveClass() {
         sequenceUser = [];
         growingSequence();
         console.log(sequenceRandom);
-        showSequence();
+        updateSequenceCounterInPage()
+        setTimeout(showSequence(), 2000);
     }
 
 }
@@ -117,3 +130,4 @@ for (let i = 1; i < 5; i++) {
 sequenceRandom.push(randomNumber());
 console.log(sequenceRandom);
 showSequence();
+updateSequenceCounterInPage();
